@@ -1,0 +1,65 @@
+#available_prefixes {
+    min-height: 100px;
+    padding: 10px;
+    margin: 5px;
+    background-color: #ecf1f3;
+    column-width: 100px;
+    column-count: 2;
+    max-height: 130px;
+}
+
+#available_prefixes span, #used_prefixes span {
+	padding:5px;
+	color:#000000;
+}
+#available_prefixes span {
+	display:block;
+}
+
+.prefix_placeholder {
+	background-color:#cadceb;
+}
+
+.prefix-dropdown {
+	background-color:#cadceb;
+	top:25px;
+	color:#ffffff;
+}
+
+.prefix-dropdown .pointer {
+	margin-top:-9px;
+	border-color:transparent;
+}
+
+.prefix-dropdown .pointer .pointer-inner {
+	border-color: #cadceb transparent;
+}
+
+.prefix-dropdown-toggle {
+	border: #cadceb 1px solid;
+	padding:2px;
+	min-width:100px;
+	min-height:15px;
+}
+
+
+.prefix-dropdown-toggle:after {
+	content: '\25BC';
+	display: inline-block;
+	font-size: 9px;
+	float: right;
+	padding-left: 2px;
+	opacity: 0.7;
+}
+
+.prefix-dropdown-container {
+	float:left;
+}
+
+/** In order for the prefix dropdown to actually show up
+    next to the topic title field on the posting page
+    instead of being hidden as if behind the posting buttons
+**/
+fieldset.fields1 dl {
+	overflow: visible;
+}

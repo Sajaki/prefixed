@@ -1,0 +1,102 @@
+<!-- INCLUDE overall_header.html -->
+
+<a id="maincontent"></a>
+
+<h1>{L_TITLE}</h1>
+
+<p>{L_TITLE_EXPLAIN}</p>
+<!-- IF S_LIST -->
+	<form id="acp_bbcodes" method="post" action="{U_ACTION}">
+		<fieldset class="tabulated">
+		<legend>{L_ACP_BBCODES}</legend>
+
+		<table cellspacing="1" id="down">
+		<thead>
+		<tr>
+			<th>{L_PREFIX}</th>
+			<th>{L_PREFIX_PARSED}</th>
+			<th>{L_ACTION}</th>
+		</tr>
+		</thead>
+		<tbody>
+		<!-- BEGIN prefix -->
+			<!-- IF prefix.S_ROW_COUNT is even --><tr class="row1"><!-- ELSE --><tr class="row2"><!-- ENDIF -->
+				<td style="text-align: center;">{prefix.SHORT}</td>
+				<td style="text-align: center;">{prefix.TITLE}</td>
+				<td style="text-align: right; width: 40px;"><a href="{prefix.U_EDIT}">{ICON_EDIT}</a> <a href="{prefix.U_DELETE}">{ICON_DELETE}</a></td>
+			</tr>
+		<!-- BEGINELSE -->
+			<tr class="row3">
+				<td colspan="3">{L_ACP_NO_ITEMS}</td>
+			</tr>
+		<!-- END prefix -->
+		</tbody>
+		</table>
+
+		<p class="quick">
+			<input class="button2" name="add" type="submit" value="{L_ADD_PREFIX}" />
+		</p>
+		{S_FORM_TOKEN}
+		</fieldset>
+
+	</form>
+<!-- ELSE -->
+	<!-- IF S_ERROR -->
+		<div class="errorbox">
+			<h3>{L_WARNING}</h3>
+			<p>{ERROR_MSG}</p>
+		</div>
+	<!-- ENDIF -->
+
+	<form id="acp_prefixes" method="post" action="{U_ACTION}">
+		<fieldset>
+			<legend>{LEGEND}</legend>
+			<dl>
+				<dt>
+					<label for="prefix_title">{L_PREFIX_TITLE}:</label>
+						<br /><span>{L_PREFIX_TITLE_EXPLAIN}</span>
+				</dt>
+				<dd><input type="text" id="prefix_title" name="prefix_title" size="60" maxlength="255" value="{PREFIX_TITLE}" /></dd>
+			</dl>
+
+			<dl>
+				<dt>
+					<label for="prefix_short">{L_PREFIX_SHORT}:</label>
+						<br /><span>{L_PREFIX_SHORT_EXPLAIN}</span>
+				</dt>
+				<dd><input type="text" id="prefix_short" name="prefix_short" size="60" maxlength="255" value="{PREFIX_SHORT}" /></dd>
+			</dl>
+
+			<dl>
+				<dt>
+					<label for="prefix_forums">{L_PREFIX_FORUMS}:</label>
+						<br /><span>{L_PREFIX_FORUMS_EXPLAIN}</span>
+				</dt>
+				<dd><input type="text" id="prefix_forums" name="prefix_forums" size="60" maxlength="255" value="{PREFIX_FORUMS}" /></dd>
+			</dl>
+
+			<dl>
+				<dt>
+					<label for="prefix_groups">{L_PREFIX_GROUPS}:</label>
+						<br /><span>{L_PREFIX_GROUPS_EXPLAIN}</span>
+				</dt>
+				<dd><input type="text" id="prefix_groups" name="prefix_groups" size="60" maxlength="255" value="{PREFIX_GROUPS}" /></dd>
+			</dl>
+
+			<dl>
+				<dt>
+					<label for="prefix_users">{L_PREFIX_USERS}:</label>
+						<br /><span>{L_PREFIX_USERS_EXPLAIN}</span>
+				</dt>
+				<dd><input type="text" id="prefix_users" name="prefix_users" size="60" maxlength="255" value="{PREFIX_USERS}" /></dd>
+			</dl>
+
+			<p class="submit-buttons">
+				<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+				<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+			</p>
+			{S_FORM_TOKEN}
+		</fieldset>
+	</form>
+<!-- ENDIF -->
+<!-- INCLUDE overall_footer.html -->
