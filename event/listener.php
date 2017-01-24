@@ -92,10 +92,11 @@ class listener implements EventSubscriberInterface
 			'core.viewforum_get_topic_ids_data'			=> 'filter_viewforum_by_prefix',
 			'core.display_forums_modify_sql'			=> 'modify_forumlist_sql',
 			'core.display_forums_modify_template_vars'	=> 'get_forumlist_topic_prefixes',
-			'core.search_modify_tpl_ary'				=> 'get_searchlist_topic_prefixes', 
+			'core.search_modify_tpl_ary'				=> 'get_searchlist_topic_prefixes',
 
 			// Events added by this extension
 			'prefixed.modify_prefix_title'				=> 'get_token_data',
+			'paybas.recenttopics.modify_topictitle'		=> 'get_recent_topics_topictitle',
 		];
 	}
 
@@ -263,6 +264,27 @@ class listener implements EventSubscriberInterface
 		$forum_row = $event['forum_row'];
 		$forum_row['TOPIC_PREFIX'] = $this->load_prefixes_topic($event, 'row', '', true);
 		$event['forum_row'] = $forum_row;
+	}
+
+	/**
+	 * listener for @event paybas.recenttopics.modify_topictitle
+	 *
+	 * @param $event
+	 * @return null
+	 */
+	public function get_recent_topics_topictitle($event)
+	{
+		$forum_row = $event['row'];
+		$prefix_instances = $this->manager->get_prefix_instances();
+		foreach($prefix_instances as $key1)
+		{
+			if ($forum_row['topic_id'] == $key1['topic'])
+			{
+				$prefixes = $this->manager->get_prefixes();
+				$prefix = '[' . $prefixes[$key1['prefix']]['title'] . '] ';
+				$event['prefix'] = $prefix;
+			}
+		}
 	}
 
 	/**
